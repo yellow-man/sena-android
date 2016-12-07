@@ -1,13 +1,12 @@
-package yokohama.yellow_man.senadroid;
+package yokohama.yellow_man.senadroid.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.widget.RemoteViews;
 
-/**
- * Implementation of App Widget functionality.
- */
+import yokohama.yellow_man.senadroid.R;
+
 public class NewAppWidget extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,

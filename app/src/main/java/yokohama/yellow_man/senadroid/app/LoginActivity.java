@@ -1,4 +1,4 @@
-package yokohama.yellow_man.senadroid;
+package yokohama.yellow_man.senadroid.app;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -33,10 +33,17 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import yokohama.yellow_man.senadroid.R;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
- * A login screen that offers login via email/password.
+ * ログイン画面Activity。
+ * <p>
+ *     ログイン画面機能を提供する。
+ * </p>
+ * @author yellow-man
+ * @since 1.0.0
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
@@ -83,11 +90,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        // 「ログイン」ボタン押下時
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
+            }
+        });
+
+        // 「アカウントを作成する」ボタン押下時
+        Button mCreateAccountButton = (Button) findViewById(R.id.create_account_button);
+        mCreateAccountButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CreateAccountActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -177,6 +197,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             focusView = mEmailView;
             cancel = true;
         }
+
+        // TODO yellow-man ログインチェックなし
+        cancel = false;
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first

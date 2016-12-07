@@ -1,4 +1,4 @@
-package yokohama.yellow_man.senadroid;
+package yokohama.yellow_man.senadroid.app;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +21,9 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import yokohama.yellow_man.senadroid.CheeseListFragment;
+import yokohama.yellow_man.senadroid.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
