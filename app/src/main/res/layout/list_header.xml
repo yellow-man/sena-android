@@ -19,13 +19,11 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    android:background="@drawable/style_rounded_corners_white_highlight"
+    android:background="@drawable/style_rounded_corners_xxx_highlight"
     android:contextClickable="?android:attr/selectableItemBackground"
     android:gravity="center"
     android:orientation="vertical">
@@ -33,37 +31,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         >
-
-        <TextView
-            android:id="@+id/text2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:gravity="bottom"
-            android:text="9983" />
 
         <TextView
             android:id="@android:id/text1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:text="ファーストリテイリング" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="@color/white"
+            android:text="銘柄名" />
 
         <TextView
             android:id="@+id/text9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:gravity="right|bottom"
-            android:text="(1,234,567)" />
+            android:textColor="@color/white"
+            android:text="数量" />
     </LinearLayout>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="1dp"
         android:stretchColumns="0,1,2,3">
 
         <TableRow
@@ -73,62 +69,66 @@
 
             <TextView
                 android:id="@+id/text3"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:gravity="right"
-                android:text="40,000.0" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="現在値" />
 
             <TextView
                 android:id="@+id/text7"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:gravity="right"
-                android:textColor="@color/red"
-                android:text="+12,345.0" />
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="前日比" />
 
             <TextView
                 android:id="@+id/text5"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:gravity="right"
-                android:textColor="@color/red"
-                android:text="+1,234,567円" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="評価損益" />
 
             <TextView
                 android:id="@+id/text10"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:gravity="right"
-                android:text="1,234,567,890円" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="評価額" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="1dp"
             >
 
             <TextView
                 android:id="@+id/text4"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:gravity="right"
-                android:text="25,000.0" />
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="平均取得単価" />
 
             <TextView
                 android:id="@+id/text6"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:gravity="right"
-                android:textColor="@color/red"
-                android:text="(+123.00%)" />
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="前日比率" />
 
             <TextView
                 android:id="@+id/text8"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:gravity="right"
-                android:textColor="@color/red"
-                android:text="(+12,345.00%)" />
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="評価損益率" />
 
             <TextView
                 android:id="@+id/text11"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:gravity="right"
-                android:text="(1,234,567,890円)" />
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:text="平均取得額" />
         </TableRow>
     </TableLayout>
 

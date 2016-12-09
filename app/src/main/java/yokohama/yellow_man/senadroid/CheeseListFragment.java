@@ -85,17 +85,10 @@ public class CheeseListFragment extends Fragment {
             public String mBoundString;
 
             public final View mView;
-            public final TextView mTextView;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mTextView = (TextView) view.findViewById(android.R.id.text1);
-            }
-
-            @Override
-            public String toString() {
-                return super.toString() + " '" + mTextView.getText();
             }
         }
 
@@ -182,6 +175,20 @@ public class CheeseListFragment extends Fragment {
                 BarData barData = new BarData(xValues, barDataSets);
                 return barData;
             }
+        }
+
+        public static class ViewHolder3 extends ViewHolder {
+            public String mBoundString;
+
+            public final View mView;
+            public final TextView mTextView;
+
+            public ViewHolder3(View view) {
+                super(view);
+                mView = view;
+                mTextView = (TextView) view.findViewById(android.R.id.text1);
+            }
+
             @Override
             public String toString() {
                 return super.toString() + " '" + mTextView.getText();
@@ -202,9 +209,12 @@ public class CheeseListFragment extends Fragment {
                 case 1:
                     view = LayoutInflater.from(parent.getContext()).inflate(R.layout.graph_item, parent, false);
                     return new ViewHolder2(view);
+                case 2:
+                    view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_header, parent, false);
+                    return new ViewHolder(view);
                 default:
                     view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-                    return new ViewHolder(view);
+                    return new ViewHolder3(view);
             }
         }
 
@@ -212,8 +222,10 @@ public class CheeseListFragment extends Fragment {
         public int getItemViewType(int position) {
             if (position < 1) {
                 return 1;
+            } else if (position == 1) {
+                return 2;
             }
-            return 2;
+            return 3;
         }
 
         @Override
@@ -222,18 +234,18 @@ public class CheeseListFragment extends Fragment {
             if (position < 1) {
 
             } else {
-                holder.mBoundString = mValues.get(position);
-                holder.mTextView.setText(mValues.get(position));
-                holder.mView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+//                holder.mBoundString = mValues.get(position);
+//                holder.mTextView.setText(mValues.get(position));
+//                holder.mView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
 //                        Context context = v.getContext();
 //                        Intent intent = new Intent(context, CheeseDetailActivity.class);
 //                        intent.putExtra(CheeseDetailActivity.EXTRA_NAME, holder.mBoundString);
 //
 //                        context.startActivity(intent);
-                    }
-                });
+//                    }
+//                });
             }
         }
 
