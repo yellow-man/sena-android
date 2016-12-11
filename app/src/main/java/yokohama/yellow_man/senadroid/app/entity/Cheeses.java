@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-package yokohama.yellow_man.senadroid;
+package yokohama.yellow_man.senadroid.app.entity;
 
 import java.util.Random;
+
+import yokohama.yellow_man.senadroid.R;
 
 public class Cheeses {
 

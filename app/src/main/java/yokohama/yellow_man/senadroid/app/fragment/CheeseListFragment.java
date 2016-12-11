@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package yokohama.yellow_man.senadroid;
+package yokohama.yellow_man.senadroid.app.fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -31,14 +31,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -49,6 +44,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import yokohama.yellow_man.senadroid.app.entity.Cheeses;
+import yokohama.yellow_man.senadroid.R;
 import yokohama.yellow_man.senadroid.app.CheeseDetailActivity;
 
 public class CheeseListFragment extends Fragment {

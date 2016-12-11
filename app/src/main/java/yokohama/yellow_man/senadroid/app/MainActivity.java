@@ -22,8 +22,9 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
-import yokohama.yellow_man.senadroid.CheeseListFragment;
+import yokohama.yellow_man.senadroid.app.fragment.CheeseListFragment;
 import yokohama.yellow_man.senadroid.R;
+import yokohama.yellow_man.senadroid.app.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -124,9 +125,10 @@ public class MainActivity extends AppCompatActivity
 
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new CheeseListFragment(), "Category 1");
-        adapter.addFragment(new CheeseListFragment(), "Category 2");
-        adapter.addFragment(new CheeseListFragment(), "Category 3");
+        adapter.addFragment(new HomeFragment(), "ホーム");
+        adapter.addFragment(new CheeseListFragment(), "登録銘柄");
+        adapter.addFragment(new CheeseListFragment(), "保有証券");
+        adapter.addFragment(new CheeseListFragment(), "信用建玉");
         viewPager.setAdapter(adapter);
     }
 
