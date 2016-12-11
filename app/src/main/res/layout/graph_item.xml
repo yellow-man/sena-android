@@ -29,8 +29,8 @@
         android:background="@drawable/style_rounded_corners_white"
         android:gravity="center_vertical">
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/bar_chart"
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_margin="7dp" />

@@ -18,6 +18,7 @@ package yokohama.yellow_man.senadroid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -32,10 +33,16 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -102,78 +109,69 @@ public class CheeseListFragment extends Fragment {
             }
 
             public void createBarChart(View view) {
-                BarChart barChart = (BarChart) view.findViewById(R.id.bar_chart);
+                LineChart chart = (LineChart) view.findViewById(R.id.chart);
 
-                barChart.getAxisRight().setEnabled(false);
-                barChart.getAxisLeft().setEnabled(true);
-                barChart.setDrawGridBackground(true);
-                barChart.setDrawBarShadow(false);
-                barChart.setEnabled(true);
+                // apply styling
+                // holder.chart.setValueTypeface(mTf);
+                chart.getDescription().setEnabled(false);
+                chart.setDrawGridBackground(false);
 
-                barChart.setTouchEnabled(true);
-                barChart.setPinchZoom(true);
-                barChart.setDoubleTapToZoomEnabled(true);
-
-                barChart.setScaleEnabled(true);
-
-                barChart.getLegend().setEnabled(true);
-
-                //X軸周り
-                XAxis xAxis = barChart.getXAxis();
-                xAxis.setDrawLabels(true);
+                XAxis xAxis = chart.getXAxis();
                 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-                xAxis.setDrawGridLines(true);
+                xAxis.setDrawGridLines(false);
+                xAxis.setDrawAxisLine(true);
 
-                barChart.setData(createBarChartData());
+                YAxis leftAxis = chart.getAxisLeft();
+                leftAxis.setLabelCount(5, false);
+                leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
-                barChart.invalidate();
-                // アニメーション
-                barChart.animateY(2000, Easing.EasingOption.EaseInBack);
+                YAxis rightAxis = chart.getAxisRight();
+                rightAxis.setLabelCount(5, false);
+                rightAxis.setDrawGridLines(false);
+                rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+
+                // set data
+                chart.setData(createBarChartData());
+
+                // do not forget to refresh the chart
+                // holder.chart.invalidate();
+                chart.animateX(750);
             }
 
-            // BarChartの設定
-            private BarData createBarChartData() {
-                ArrayList<BarDataSet> barDataSets = new ArrayList<>();
+            // LineDataの設定
+            private LineData createBarChartData() {
+                ArrayList<Entry> e1 = new ArrayList<Entry>();
 
-                // X軸
-                ArrayList<String> xValues = new ArrayList<>();
-                xValues.add("1月");
-                xValues.add("2月");
-                xValues.add("3月");
-                xValues.add("4月");
-                xValues.add("5月");
-                xValues.add("6月");
+                for (int i = 0; i < 12; i++) {
+                    e1.add(new Entry(i, (int) (Math.random() * 65) + 40));
+                }
 
-                // valueA
-                ArrayList<BarEntry> valuesA = new ArrayList<>();
-                valuesA.add(new BarEntry(100, 0));
-                valuesA.add(new BarEntry(200, 1));
-                valuesA.add(new BarEntry(300, 2));
-                valuesA.add(new BarEntry(400, 3));
-                valuesA.add(new BarEntry(500, 4));
-                valuesA.add(new BarEntry(600, 5));
+                LineDataSet d1 = new LineDataSet(e1, "New DataSet " + 1 + ", (1)");
+                d1.setLineWidth(2.5f);
+                d1.setCircleRadius(4.5f);
+                d1.setHighLightColor(Color.rgb(244, 117, 117));
+                d1.setDrawValues(false);
 
-                BarDataSet valuesADataSet = new BarDataSet(valuesA, "A");
-                valuesADataSet.setColor(ColorTemplate.COLORFUL_COLORS[3]);
+                ArrayList<Entry> e2 = new ArrayList<Entry>();
 
-                barDataSets.add(valuesADataSet);
+                for (int i = 0; i < 12; i++) {
+                    e2.add(new Entry(i, e1.get(i).getY() - 30));
+                }
 
-                // valueB
-                ArrayList<BarEntry> valuesB = new ArrayList<>();
-                valuesB.add(new BarEntry(200, 0));
-                valuesB.add(new BarEntry(300, 1));
-                valuesB.add(new BarEntry(400, 2));
-                valuesB.add(new BarEntry(500, 3));
-                valuesB.add(new BarEntry(600, 4));
-                valuesB.add(new BarEntry(700, 5));
+                LineDataSet d2 = new LineDataSet(e2, "New DataSet " + 1 + ", (2)");
+                d2.setLineWidth(2.5f);
+                d2.setCircleRadius(4.5f);
+                d2.setHighLightColor(Color.rgb(244, 117, 117));
+                d2.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
+                d2.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[0]);
+                d2.setDrawValues(false);
 
-                BarDataSet valuesBDataSet = new BarDataSet(valuesB, "B");
-                valuesBDataSet.setColor(ColorTemplate.COLORFUL_COLORS[4]);
+                ArrayList<ILineDataSet> sets = new ArrayList<ILineDataSet>();
+                sets.add(d1);
+                sets.add(d2);
 
-                barDataSets.add(valuesBDataSet);
-
-                BarData barData = new BarData(xValues, barDataSets);
-                return barData;
+                LineData cd = new LineData(sets);
+                return cd;
             }
         }
 
