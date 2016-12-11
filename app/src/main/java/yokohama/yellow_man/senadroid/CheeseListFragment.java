@@ -232,20 +232,27 @@ public class CheeseListFragment extends Fragment {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             Log.d("hogehoge", String.valueOf(position));
             if (position < 1) {
+                // グラフ
+
+            } else if (position == 1) {
+                // ヘッダー
 
             } else {
-//                holder.mBoundString = mValues.get(position);
-//                holder.mTextView.setText(mValues.get(position));
-//                holder.mView.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Context context = v.getContext();
-//                        Intent intent = new Intent(context, CheeseDetailActivity.class);
-//                        intent.putExtra(CheeseDetailActivity.EXTRA_NAME, holder.mBoundString);
-//
-//                        context.startActivity(intent);
-//                    }
-//                });
+                // ボディ
+                ViewHolder3 holder3 = (ViewHolder3)holder;
+
+                holder3.mBoundString = mValues.get(position);
+                holder3.mTextView.setText(mValues.get(position));
+                holder3.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Context context = v.getContext();
+                        Intent intent = new Intent(context, CheeseDetailActivity.class);
+                        intent.putExtra(CheeseDetailActivity.EXTRA_NAME, holder.mBoundString);
+
+                        context.startActivity(intent);
+                    }
+                });
             }
         }
 
